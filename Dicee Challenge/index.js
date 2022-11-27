@@ -1,29 +1,25 @@
 function diceRoll() {
-    var randomNumber = Math.random();
-    
-    randomNumber = randomNumber * 6;
-    
-    
-    randomNumber = Math.floor(randomNumber) + 1;
-
-    return randomNumber;
+  return Math.floor(Math.random() * 6) + 1;
 }
 
-var randomNumber1 = diceRoll();
-document
-  .querySelector(".img1")
-  .setAttribute("src", "images/dice" + randomNumber1 + ".png");
+function updateImage(queryName, randomNumber) {
+  document
+    .querySelector(queryName)
+    .setAttribute("src", "images/dice" + randomNumber + ".png");
+}
 
-var randomNumber2 = diceRoll();
+function update() {
+  var randomNumber1 = diceRoll();
+  var randomNumber2 = diceRoll();
 
-document
-  .querySelector(".img2")
-  .setAttribute("src", "images/dice" + randomNumber2 + ".png");
+  updateImage(".img1", randomNumber1);
+  updateImage(".img2", randomNumber2);
 
-if (randomNumber2 > randomNumber1) {
-  document.querySelector("h1").innerHTML = "Player 2 Wins!";
-} else if (randomNumber1 > randomNumber2) {
-  document.querySelector("h1").innerHTML = "Player 1 Wins!";
-} else {
-  document.querySelector("h1").innerHTML = "Dostluk Wins!";
+  if (randomNumber2 > randomNumber1) {
+    document.querySelector("h1").innerHTML = "Player 2 Wins!";
+  } else if (randomNumber1 > randomNumber2) {
+    document.querySelector("h1").innerHTML = "Player 1 Wins!";
+  } else {
+    document.querySelector("h1").innerHTML = "Dostluk Wins!";
+  }
 }
